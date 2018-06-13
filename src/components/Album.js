@@ -11,8 +11,8 @@ class Album extends Component {
 
     this.state = {
       album: album,
-      currentSong: album.songs[0],
-      isPlaying: false
+      currentSong: '',
+      isPlaying: false,
     };
 
     this.audioElement = document.createElement('audio');
@@ -45,6 +45,33 @@ class Album extends Component {
     }
   }
 
+  buildControl(song, index) {
+    const isSameSong = this.state.currentSong === song;
+    const isSameHover = this.state.isHovered === index+1;
+
+    // If current song
+    if (isSameSong) {
+        // and playing
+        if (this.state.isPlaying) {
+          return ( <span className="icon ion-md-pause"></span> )
+        }
+        // and paused
+        if (!this.state.isPlaying) {
+            return ( <span className="icon ion-md-play"></span> )
+        }
+    }
+    // If not current song
+    else {
+      // and hovered
+      if (isSameHover) {
+        return ( <span className="icon ion-md-play"></span> )
+      }
+      else {
+        return index+1;
+      }
+    }
+  }
+
   render() {
     return (
       <section className="album">
@@ -62,10 +89,12 @@ class Album extends Component {
               <col id="song-title-column" />
               <col id="song-duration-column" />
             </colgroup>  
-           <tbody>
-            {this.state.album.songs.map( (song, index) => 
-              <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
-                <td>{index + 1} <span className="icon ion-md-play"></span> <span className="icon ion-md-pause"></span> </td>
+           <tbody> {this.state.album.songs.map( (song, index) => 
+              <tr className="song" key={index} 
+                onClick={() => this.handleSongClick(song)} 
+                onMouseEnter={() => this.setState({isHovered: index+1})}
+                onMouseLeave={() => this.setState({isHovered: 0})}>
+                <td>{this.buildControl(song,index)}</td> 
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
               </tr>
