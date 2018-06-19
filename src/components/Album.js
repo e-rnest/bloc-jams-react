@@ -114,11 +114,18 @@ class Album extends Component {
     }
     this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+
+    document.body.style.backgroundImage = 'url('+this.state.album.albumCover+')';
+    
+
   }
   componentWillUnmount() {
     this.audioElement.src = null;
     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+
+    document.body.style.backgroundImage = 'url(https://picsum.photos/1200/1200/?image=1067)';
+
   }
 
   formatTime(seconds) {

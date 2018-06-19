@@ -1,5 +1,80 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
+
+html { text-size-adjust: 100%; }
+body { margin: 0; padding: 0; font-family: 'Lato', sans-serif; font-size: 14px; background: no-repeat center center fixed; background-color: #29434e; background-image: url('https://picsum.photos/1200/1200/?image=1067'); background-size: cover; }
+
+/* Navigation Bar */
+header nav { background: #29434e; text-align: left; box-sizing: border-box; height: 64px; line-height: 64px; width: 100%; display: block; }
+  header nav .nav-wrapper { position: relative; height: 100%; line-height: 64px; }
+    header .logo { font-family: 'Rock Salt', cursive; color: #ffff8d; font-size: 48px; line-height: 1.1em; }
+    header .logo { position: absolute; display: inline-block; font-size: 3rem; padding: 10px 15px 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+    header nav .nav-links { float: right; display: flex; align-items: center; }
+    header nav .nav-links a { float: left; color: #fff; height: 100%; background: rgba(255,255,255,0.33); padding-left: 2em; padding-right: 2em; margin-left: 1px; display: block; text-decoration: none; font-weight: 300; font-size: 14px; text-transform: uppercase; transition: 0.25s all ease-in-out; }
+    header nav .nav-links a:hover { background: rgba(255,255,255,0.25);  text-shadow: 0 1px 3px rgba(0,0,0,0.75)}
+
+/* Landing Page / Main */
+section.landing div.hero { max-width: 1170px; margin: 10em auto 3rem; }
+  section.landing div.hero h1.hero-title { font-size: 72px; font-weight: 400; line-height: 1.15em; }
+  section.landing div.hero h2.hero-copy { font-size: 42px; font-weight: 300; background: rgba(255,255,255,0.075); padding: 0.25em 0 1em; text-shadow: 0 1px 2px rgba(255,255,255,0.5); font-style: italic; }
+section.landing section.selling-points { max-width: 1170px; margin: auto; display: flex; }
+  section.landing section.selling-points div.point { padding: 0.75em; margin: 0.75em; width: 100%; align-items: flex-start; border-radius: 2px; background: #fff; box-shadow: 0 3px 5px rgba(0,0,0,0.15); }
+    section.landing section.selling-points h2.point-title { font-size: 38px; font-weight: 300; }
+    section.landing section.selling-points p.point-description { font-size: 24px; font-weight: 300; }
+
+
+/* Album Page */
+section.album #album-cover-art { width: 200px; height: auto; }
+section.album table#song-list { border: 1px solid #eee; box-shadow: 0 3px 5px rgba(0,0,0,0.15); border-collapse: collapse; margin: 2em auto; min-width: 500px; background: #fff; }
+  section.album table#song-list tr { transition: 1s all ease-in-out; }
+    section.album table#song-list tr td { font-size: 18px; border-bottom: 1px solid rgba(0,0,0,0.075); height: 72px;  }
+      section.album table#song-list tr td .icon { border: 1px solid rgba(255,255,255,0.0); display: inline-block; width: 45px; height: 45px; line-height: 45px; border-radius: 2px;  }
+  section.album table#song-list tr:hover td { background: rgba(0,0,0,0.05); cursor: pointer; transition: 0.125s background ease-in; }
+    section.album table#song-list tr:hover td .icon { box-shadow: 0 1px 3px rgba(0,0,0,0.15); background: #fff; }
+      section.album table#song-list tr:hover td:first-child .ion-md-play { color: #2196f3; }
+      section.album table#song-list tr:hover td:first-child .ion-md-pause { color: #ff5722; }
+
+/* Library Page */
+section.library, section.album { margin-bottom: 100px; }
+  section.library div.album-listing, section.album { max-width: 600px; margin: 60px auto; padding: 20px 0; background: rgba(0,0,0,0.8); border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); transition: 0.175s all ease-in-out;  }
+  section.library div.album-listing:hover { background: rgba(0,0,0,0.9); transform: scale(1.025); }
+  section.library a, section.album .album-details { text-decoration: none; }
+  section.library a { color: #ffe; }
+  section.library a *, section.album .album-details * { text-decoration: none; font-weight: 300; }
+  section.library div.album-listing:hover a, section.album .album-details { color: #fff; }
+  section.library h2, section.album .album-details h1 { font-size: 36px; margin: 0.75em 0 0.25em; text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+  section.library h3, section.album .album-details h2 { font-size: 18px; margin: 0.75em 0; text-transform: uppercase; }
+  section.library div.album-stats, section.album .album-details div#release-info { font-size: 14px; margin: 0.75em 0; }
+
+/* Album Component: Player Bar */
+section.player-bar { display: flex; justify-content: space-between; align-items: center; width: calc(100% - 30px); margin: auto 30px; }
+  section.player-bar>section { margin: auto 1.5em; }
+
+section.player-bar section#buttons button { font-size: 18px; margin-left: 1px; margin-right: 1px; }
+  section.player-bar section#buttons button:hover { cursor: pointer; }
+  section.player-bar section#buttons button:hover span { color: #2196f3; }
+  section.player-bar section#buttons button:hover span.ion-ios-pause { color: #ff5722; }
+section.player-bar section#time-control, section.player-bar section#volume-control { display: flex; justify-content: center; align-items: center; }
+section.player-bar section#time-control, section.player-bar section#volume-control * { color: #fff;  }
+
+section.player-bar section#time-control { font-weight: 300; margin: 0.5em 0; }
+  section.player-bar section#time-control input[type=range] { width: 180px; }
+    section.player-bar section#time-control .current-time, section.player-bar section#time-control .total-time { margin: auto 0.125em; }
+section.player-bar section#volume-control {  font-size: 18px; }
+  section.player-bar section#volume-control input[type=range] { width: 50px; }
+    section.player-bar section#volume-control .ion-ios-volume-low, section.player-bar section#volume-control .ion-ios-volume-high { width: 15px; }
+
+
+@media only screen and (max-width: 600px) {
+  section.landing div.hero { padding: 5px; margin-top: 3rem; font-size: 36px; }
+    section.landing div.hero h1.hero-title { font-size: 58px; }
+    section.landing div.hero h2.hero-copy { font-size: 24px; font-weight: 300; background: rgba(255,255,255,0.5); padding: 1em 0; }
+    section.landing section.selling-points { flex-wrap: wrap; }
+  section.album { margin-top: 0; }
+  section.library div.album-listing { margin: 2em 0; padding: 5px; background: rgba(0,0,0,0.9); }
+    section.library div.album-listing:hover { transform: none; }
+    section.library img { max-width: 100%; height: auto; }
+    section.library div.album-stats { margin-bottom: 1em; }
+  section.album table#song-list { min-width: 100%; }
+  section.album section.player-bar { flex-wrap: wrap; justify-content: center; }
 }
